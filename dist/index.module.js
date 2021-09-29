@@ -125,7 +125,7 @@ function copy(options = {}) {
           } = copyTarget;
 
           if (transformed) {
-            if (!restPluginOptions.filter || restPluginOptions.filter(src, dest)) {
+            if (!restPluginOptions.filter || restPluginOptions.filter(src, dest) === true || (await restPluginOptions.filter(src, dest)) === true) {
               await fs.outputFile(dest, contents, restPluginOptions);
             }
           } else {
